@@ -1,7 +1,4 @@
-from fmarket.farfetch import api
-import datetime
-
-date = datetime.datetime.today().strftime('%m-%d-%y')
+import api
 
 api = api.Api()
 total_pages = api.get_listings()['totalPages']
@@ -18,5 +15,4 @@ def run():
 
 if __name__ == 'main':
     run()
-    api.df.to_csv('current_farfetch_listings' + date + '.csv')
-
+    api.df.to_json(orient='table')
